@@ -7,6 +7,7 @@ export default function LoginPage(){
     return (
       <>
         Signed in as {session.user.email} <br />
+        nice
         <button onClick={() => signOut()}>Sign out</button>
       </>
     );
