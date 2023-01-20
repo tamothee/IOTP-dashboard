@@ -12,7 +12,7 @@ export default function SideBar({ children }) {
     setWindowWidth(width);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     updateDimensions();
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
