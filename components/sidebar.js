@@ -101,7 +101,7 @@ export default function SideBar({ children }) {
           <Typography variant="h6" noWrap component="div">
             IOTP
           </Typography>
-          <IconButton onClick={() => signOut()}>
+          <IconButton onClick={() => signOut()} style={{marginLeft: 'auto'}}>
             <LogoutIcon />
           </IconButton>
         </Toolbar>
@@ -119,7 +119,7 @@ export default function SideBar({ children }) {
         anchor="left"
         open={open}
       >
-        <DrawerHeader>
+        <DrawerHeader className="unset-img">
           <Image alt="sp" src={SP} placeholder="blur" fill={true} className="custom-img"/>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
