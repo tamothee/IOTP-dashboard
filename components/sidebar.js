@@ -22,6 +22,8 @@ import MailIcon from "@mui/icons-material/Mail";
 import Image from "next/image";
 import SP from "../public/sp_logo.png";
 import "./img.css"
+import LogoutIcon from '@mui/icons-material/Logout';
+import { signOut } from "next-auth/react"
 
 const drawerWidth = 240;
 
@@ -99,6 +101,9 @@ export default function SideBar({ children }) {
           <Typography variant="h6" noWrap component="div">
             IOTP
           </Typography>
+          <IconButton onClick={() => signOut()}>
+            <LogoutIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
