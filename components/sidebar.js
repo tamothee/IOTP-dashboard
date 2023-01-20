@@ -86,7 +86,6 @@ export default function SideBar({ children }) {
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
-          <Image alt="sp" src={SP} placeholder="blur" />
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -114,6 +113,7 @@ export default function SideBar({ children }) {
         anchor="left"
         open={open}
       >
+        <Image alt="sp" src={SP} placeholder="blur" />
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
