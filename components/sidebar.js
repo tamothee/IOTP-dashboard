@@ -26,6 +26,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
 import { Grid } from "@mui/material";
 import MiniDrawer from "./MiniDrawer";
+import PermDrawer from "./PermDrawer";
 
 const drawerWidth = 240;
 
