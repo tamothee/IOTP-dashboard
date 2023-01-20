@@ -5,7 +5,7 @@ import MiniDrawer from "./MiniDrawer";
 import PermDrawer from "./PermDrawer";
 
 export default function SideBar({ children }) {
-  const [width, setWindowWidth] = useState(0);
+  const [width, setWindowWidth] = React.useState(0);
 
   const updateDimensions = () => {
     const width = window.innerWidth;
