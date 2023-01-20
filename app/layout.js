@@ -2,6 +2,7 @@
 
 import { SessionProvider } from "next-auth/react";
 import NavBar from "../components/navbar";
+import SideBar from "../components/sidebar";
 
 export default function RootLayout({ children, ...props }) {
   console.log("layout", { props }); // empty
@@ -12,6 +13,7 @@ export default function RootLayout({ children, ...props }) {
       <body>
         <SessionProvider session={props.session}>
           <NavBar />
+          <SideBar/>
           {children}
         </SessionProvider>
       </body>
