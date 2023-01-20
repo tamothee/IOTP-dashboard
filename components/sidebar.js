@@ -114,7 +114,7 @@ export default function SideBar({ children }) {
         open={open}
       >
         <DrawerHeader>
-          <Image alt="sp" src={SP} placeholder="blur" fill={true}/>
+          <Image alt="sp" src={SP} placeholder="blur" sizes='100%' />
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
