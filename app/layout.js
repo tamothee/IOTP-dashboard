@@ -12,9 +12,7 @@ export default function RootLayout({ children, ...props }) {
       <head></head>
       <body>
         <SessionProvider session={props.session}>
-          <NavBar />
-          <SideBar/>
-          {children}
+          <SideBar>{children}</SideBar>
         </SessionProvider>
       </body>
     </html>
