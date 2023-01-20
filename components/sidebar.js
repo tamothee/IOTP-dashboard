@@ -119,7 +119,7 @@ export default function SideBar({ children }) {
         anchor="left"
         open={open}
       >
-        <DrawerHeader className="unset-img">
+        <DrawerHeader>
           <Image alt="sp" src={SP} placeholder="blur" fill={true} className="custom-img"/>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
