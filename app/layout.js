@@ -1,6 +1,7 @@
 "use client";
 
 import { SessionProvider } from "next-auth/react";
+import NavBar from "../components/navbar";
 
 export default function RootLayout({ children, ...props }) {
   console.log("layout", { props }); // empty
@@ -10,7 +11,9 @@ export default function RootLayout({ children, ...props }) {
       <head></head>
       <body>
         <SessionProvider session={props.session}>
-          {children}
+          <NavBar>
+            {children}
+          </NavBar>
         </SessionProvider>
       </body>
     </html>
