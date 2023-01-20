@@ -21,6 +21,7 @@ import MailIcon from "@mui/icons-material/Mail";
 
 import Image from "next/image";
 import SP from "../public/sp_logo.png";
+import "./img.css"
 
 const drawerWidth = 240;
 
@@ -114,7 +115,7 @@ export default function SideBar({ children }) {
         open={open}
       >
         <DrawerHeader>
-          <Image alt="sp" src={SP} placeholder="blur" sizes='100%' />
+          <Image alt="sp" src={SP} placeholder="blur" fill={true} className="custom-img"/>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
