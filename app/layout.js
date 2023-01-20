@@ -11,9 +11,8 @@ export default function RootLayout({ children, ...props }) {
       <head></head>
       <body>
         <SessionProvider session={props.session}>
-          <NavBar>
-            {children}
-          </NavBar>
+          <NavBar />
+          {children}
         </SessionProvider>
       </body>
     </html>
