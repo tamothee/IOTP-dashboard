@@ -13,7 +13,8 @@
     "next-auth": "^4.18.8",
     "pocketbase": "^0.10.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "realm-web": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "8.31.0",
