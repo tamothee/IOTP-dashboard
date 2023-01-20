@@ -9,7 +9,7 @@ export default function RootLayout({ children, ...props }) {
   return (
     <html>
       <head></head>
-      <body style={{minWidth: '100vw', minHeight:'100vh'}}>
+      <body style={{maxWidth: '100vw', maxHeight:'100vh'}}>
         <SessionProvider session={props.session}>
           <SideBar>{children}</SideBar>
         </SessionProvider>
