@@ -25,6 +25,7 @@ import "./img.css";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
 import { Grid } from "@mui/material";
+import MiniDrawer from "./MiniDrawer";
 
 const drawerWidth = 240;
 
@@ -74,104 +75,25 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function SideBar({ children }) {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [width, setWindowWidth] = useState(0);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const updateDimensions = () => {
+    const width = window.innerWidth;
+    setWindowWidth(width);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  useEffect(() => {
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
 
   return (
     <Grid>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <AppBar position="fixed" open={open}>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={{ mr: 2, ...(open && { display: "none" }) }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap component="div">
-              IOTP
-            </Typography>
-            <IconButton
-              onClick={() => signOut()}
-              style={{ marginLeft: "auto" }}
-            >
-              <LogoutIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-            "& .MuiDrawer-paper": {
-              width: drawerWidth,
-              boxSizing: "border-box",
-            },
-          }}
-          variant="persistent"
-          anchor="left"
-          open={open}
-        >
-          <DrawerHeader>
-            <Image
-              alt="sp"
-              src={SP}
-              placeholder="blur"
-              fill={true}
-              className="custom-img"
-            />
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "ltr" ? (
-                <ChevronLeftIcon />
-              ) : (
-                <ChevronRightIcon />
-              )}
-            </IconButton>
-          </DrawerHeader>
-          <Divider />
-          <List>
-            {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Drawer>
-        <Main open={open}>
-          <DrawerHeader />
-          {children}
-        </Main>
-      </Box>
+        {
+            width > 1023 ? <PermDrawer>{children}</PermDrawer> : <MiniDrawer>{children}</MiniDrawer>
+        }
+      
     </Grid>
   );
 }
