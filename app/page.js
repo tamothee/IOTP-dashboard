@@ -1,4 +1,4 @@
-"use client"
+"use client" //do not remove pls
 
 import { useSession } from "next-auth/react";
 import React, { useState, useEffect } from "react";
@@ -7,6 +7,8 @@ const {
   BSON: { ObjectId },
 } = Realm;
 const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID });
+
+
 
 // Create the Application
 
@@ -26,10 +28,9 @@ const HomePage = () => {
       // const user = await app.logIn(Realm.Credentials.anonymous());
 
       //authenticate with jwt
-      // const jwt = await useSession;
-      // const user = Realm.Credentials.jwt(session.user.email);
-
-      
+      const res = await fetch("/api/getjwt");
+      const jwt = res.json();
+      const user = Realm.Credentials.jwt(jwt);
 
       setUser(user); // Connect to the database
 
