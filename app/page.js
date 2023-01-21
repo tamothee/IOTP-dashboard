@@ -17,9 +17,8 @@ const HomePage = () => {
   const [user, setUser] = useState();
   const [events, setEvents] = useState([]);
 
-  const { data: session, status } = useSession()
-  console.log(session);
-  
+  fetch
+
   // This useEffect hook will run only once when the page is loaded
   useEffect(() => {
     const login = async () => {

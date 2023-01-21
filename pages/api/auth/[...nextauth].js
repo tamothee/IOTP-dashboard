@@ -1,39 +1,58 @@
-import NextAuth from "next-auth";
-import Auth0Provider from "next-auth/providers/auth0";
+//import NextAuth from "next-auth";
+//import Auth0Provider from "next-auth/providers/auth0";
 
-export const authOptions = {
-  // Configure one or more authentication providers
+// export const authOptions = {
+//   // Configure one or more authentication providers
+//   providers: [
+//     Auth0Provider({
+//       clientId: process.env.AUTH0_CLIENT_ID,
+//       clientSecret: process.env.AUTH0_CLIENT_SECRET,
+//       issuer: process.env.AUTH0_ISSUER,
+//     }),
+
+//     // ...add more providers here
+//   ],
+// };
+// export default NextAuth(authOptions);
+
+import NextAuth from 'next-auth';
+import Providers from 'next-auth/providers';
+const nextOptions = {
+  site: process.env.NEXTAUTH_URL,
   providers: [
-    Auth0Provider({
+    Providers.Auth0({
       clientId: process.env.AUTH0_CLIENT_ID,
       clientSecret: process.env.AUTH0_CLIENT_SECRET,
-      issuer: process.env.AUTH0_ISSUER,
+      domain: process.env.AUTH0_ISSUER,
+      audience: process.env.AUTH0_API_AUDIENCE,
+      scope: 'openid profile email',
+      protection: 'pkce',
+      idToken: true,
+      authorizationUrl: `https://${
+        process.env.AUTH0_ISSUER 
+      }/authorize?response_type=code&audience=${encodeURI(
+        process.env.AUTH0_API_AUDIENCE
+      )}`,
     }),
-
-    // ...add more providers here
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   session: {
-    // Set to jwt in order to CredentialsProvider works properly
-    jwt:true
+    jwt: true,
+    secret: process.env.NEXTAUTH_SECRET,
   },
   callbacks: {
-    async jwt({ token, account, profile }) {
-      // Persist the OAuth access_token and or the user id to the token right after signin
-      if (account) {
-        token.accessToken = account.access_token;
-        token.id = profile.id;
-        console.log("token",token)
+    async jwt(token, user, account, profile, isNewUser) {
+      if (account?.accessToken) {
+        token.accessToken = account.accessToken;
       }
-      return Promise.resolve(token);
+      return token;
+    },
+
+    async session(session, token) {
+      session.accessToken = token.accessToken;
+      return session;
     },
   },
-  async session({ session, token, user }) {
-    // Send properties to the client, like an access_token and user id from a provider.
-    session.accessToken = token.accessToken
-    session.user.id = token.id
-    console.log("session", session)
-    
-    return Promise.resolve(session);
-  }
 };
-export default NextAuth(authOptions);
+
+export default (req, res) => NextAuth(req, res, nextOptions);
