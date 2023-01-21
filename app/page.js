@@ -25,7 +25,7 @@ const HomePage = () => {
       setUser(user); // Connect to the database
 
       const mongodb = app.currentUser.mongoClient("mongodb-atlas");
-      const collection = mongodb.db("test").collection("testing"); // Everytime a change happens in the stream, add it to the list of events
+      const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
 
       for await (const change of collection.watch()) {
         setEvents((events) => [...events, change]);
@@ -36,7 +36,7 @@ const HomePage = () => {
 
   function write() {
     const mongodb = app.currentUser.mongoClient("mongodb-atlas");
-    const collection = mongodb.db("test").collection("testing"); // Everytime a change happens in the stream, add it to the list of events
+    const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
     collection.insertOne({
       timestamp: new Date(),
       value: 10000,
