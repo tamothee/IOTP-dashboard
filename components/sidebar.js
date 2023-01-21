@@ -37,11 +37,20 @@ const drawerWidth = 240;
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const { openAlert, setOpenAlert } = React.useState(false);
+  const { alert, setAlert } = React.useState(false);
 
+  //open and close the drawer for mobile users
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  //handle opening and closing of dialog boxes
+  const openAlert = ()=>{
+    setAlert(true)
+  }
+  const closeAlert = ()=>{
+    setAlert(false)
+  }
 
   const drawer = (
     <div>
@@ -105,9 +114,7 @@ function ResponsiveDrawer(props) {
           </Typography>
           <IconButton
             style={{ marginLeft: "auto" }}
-            onClick={() => {
-              setOpenAlert(true);
-            }}
+            onClick={openAlert}
           >
             <LogoutIcon />
           </IconButton>
@@ -162,8 +169,8 @@ function ResponsiveDrawer(props) {
         <Toolbar />
         {/* when logout is pressed, alert dialog comes out */}
           <Dialog
-            open={openAlert}
-            onClose={()=>setOpenAlert(false)}
+            open={alert}
+            onClose={closeAlert}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
@@ -176,7 +183,7 @@ function ResponsiveDrawer(props) {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={()=>setOpenAlert(false)}>Cancel</Button>
+              <Button onClick={closeAlert}>Cancel</Button>
               <Button onClick={signOut} autoFocus>
                 OK
               </Button>
