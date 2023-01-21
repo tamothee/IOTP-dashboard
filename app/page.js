@@ -27,7 +27,7 @@ const HomePage = () => {
       try {
         const res = await fetch("/api/getjwt");
         const jwt = res.json();
-        console.log(jwt)
+        console.log(jwt);
 
         const credentials = Realm.Credentials.jwt(jwt);
         const user = await app.logIn(credentials);
