@@ -32,7 +32,7 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
-      <Image src={SP} style={{width: '100%'}}/>
+      <Image src={SP} style={{width: '100%', height:'auto'}}/>
       <Toolbar />
       <Divider />
       <List>
