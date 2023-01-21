@@ -17,7 +17,7 @@ const HomePage = () => {
   const [user, setUser] = useState();
   const [events, setEvents] = useState([]);
 
-  const [session] = useSession()
+  const {session} = useSession()
 
   // This useEffect hook will run only once when the page is loaded
   useEffect(() => {
