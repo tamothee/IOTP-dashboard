@@ -18,6 +18,7 @@ const HomePage = () => {
   const [events, setEvents] = useState([]);
   const { data: session, status } = useSession();
   console.log("session", session)
+  console.log('status',status)
 
   // This useEffect hook will run only once when the page is loaded
   useEffect(() => {
@@ -45,8 +46,10 @@ const HomePage = () => {
         console.error("Failed to log in", err.message);
       }
     };
-    login();
-  }, []);
+    if(status==='authenticated'){
+      login();
+    }
+  }, [status]);
 
   function write() {
     const mongodb = app.currentUser.mongoClient("mongodb-atlas");
