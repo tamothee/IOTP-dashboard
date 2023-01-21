@@ -28,6 +28,7 @@ const drawerWidth = 240;
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const {openAlert, setOpenAlert} = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -96,7 +97,7 @@ function ResponsiveDrawer(props) {
           <IconButton
             style={{ marginLeft: "auto" }}
             onClick={() => {
-              <AlertDialog/>
+              setOpenAlert(true)
             }}
           >
             <LogoutIcon />
@@ -150,6 +151,7 @@ function ResponsiveDrawer(props) {
         }}
       >
         <Toolbar />
+        <AlertDialog open={openAlert}/>
         {props.children}
       </Box>
     </Box>
