@@ -184,7 +184,7 @@ function ResponsiveDrawer(props) {
             </DialogContent>
             <DialogActions>
               <Button onClick={closeAlert}>Cancel</Button>
-              <Button onClick={signOut} autoFocus>
+              <Button onClick={()=>signOut()} autoFocus>
                 OK
               </Button>
             </DialogActions>
