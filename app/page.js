@@ -18,7 +18,8 @@ const HomePage = () => {
   const [events, setEvents] = useState([]);
 
   const { data: session, status } = useSession()
-
+  console.log(session);
+  
   // This useEffect hook will run only once when the page is loaded
   useEffect(() => {
     const login = async () => {
@@ -29,7 +30,7 @@ const HomePage = () => {
       // const jwt = await useSession;
       // const user = Realm.Credentials.jwt(session.user.email);
 
-      console.log(session)
+      
 
       setUser(user); // Connect to the database
 
