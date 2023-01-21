@@ -1,4 +1,4 @@
-//import NextAuth from "next-auth";
+import NextAuth from "next-auth";
 import Auth0Provider from "next-auth/providers/auth0";
 
 // export const authOptions = {
