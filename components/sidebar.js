@@ -18,7 +18,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
 import Image from "next/image";
-import SP from "../public/sp_logo.png";
+import SP from "../public/sp_logo_dark_mode.jpg";
 
 const drawerWidth = 240;
 
