@@ -21,14 +21,13 @@ import Image from "next/image";
 import SP from "../public/sp_logo_dark_mode.png";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
-import AlertDialog from "./dialogbox";
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const {openAlert, setOpenAlert} = React.useState(false);
+  const { openAlert, setOpenAlert } = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -97,7 +96,7 @@ function ResponsiveDrawer(props) {
           <IconButton
             style={{ marginLeft: "auto" }}
             onClick={() => {
-              setOpenAlert(true)
+              setOpenAlert(true);
             }}
           >
             <LogoutIcon />
@@ -151,7 +150,29 @@ function ResponsiveDrawer(props) {
         }}
       >
         <Toolbar />
-        <AlertDialog open={openAlert}/>
+        {openAlert && (
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Confirm logout"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Are you sure you want to logout?
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Cancel</Button>
+              <Button onClick={signOut} autoFocus>
+                OK
+              </Button>
+            </DialogActions>
+          </Dialog>
+        )}
         {props.children}
       </Box>
     </Box>
