@@ -1,5 +1,6 @@
 "use client"
 
+import { useSession } from "next-auth/react";
 import React, { useState, useEffect } from "react";
 import * as Realm from "realm-web";
 const {
@@ -15,13 +16,20 @@ const HomePage = () => {
   // Set state variables
   const [user, setUser] = useState();
   const [events, setEvents] = useState([]);
-  console.log('run')
+  const { data: session, status } = useSession();
+  console.log("status",status)
+  console.log("session",session)
 
   // This useEffect hook will run only once when the page is loaded
   useEffect(() => {
     const login = async () => {
       // Authenticate anonymously
       const user = await app.logIn(Realm.Credentials.anonymous());
+
+      //authenticate with jwt
+      // const jwt = await useSession;
+      // const user = Realm.Credentials.jwt(jwt);
+
       setUser(user); // Connect to the database
 
       const mongodb = app.currentUser.mongoClient("mongodb-atlas");

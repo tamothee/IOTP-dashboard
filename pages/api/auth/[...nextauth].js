@@ -8,7 +8,7 @@ export const authOptions = {
       clientId: process.env.AUTH0_CLIENT_ID,
       clientSecret: process.env.AUTH0_CLIENT_SECRET,
       issuer: process.env.AUTH0_ISSUER,
-      idToken: true
+      idToken: true,
     }),
     // ...add more providers here
   ],
@@ -20,6 +20,13 @@ export const authOptions = {
         token.id = profile.id;
       }
       return token;
+    },
+    async session({ session, token, user }) {
+      // Send properties to the client, like an access_token and user id from a provider.
+      session.accessToken = token.accessToken;
+      session.user.id = token.id;
+
+      return session;
     },
   },
 };
