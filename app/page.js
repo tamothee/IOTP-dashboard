@@ -1,4 +1,4 @@
-"use client" //do not remove pls
+"use client"; //do not remove pls
 
 import { useSession } from "next-auth/react";
 import React, { useState, useEffect } from "react";
@@ -7,8 +7,6 @@ const {
   BSON: { ObjectId },
 } = Realm;
 const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID });
-
-
 
 // Create the Application
 
@@ -19,8 +17,6 @@ const HomePage = () => {
   const [user, setUser] = useState();
   const [events, setEvents] = useState([]);
 
-  fetch
-
   // This useEffect hook will run only once when the page is loaded
   useEffect(() => {
     const login = async () => {
@@ -28,17 +24,25 @@ const HomePage = () => {
       // const user = await app.logIn(Realm.Credentials.anonymous());
 
       //authenticate with jwt
-      const res = await fetch("/api/getjwt");
-      const jwt = res.json();
-      const user = Realm.Credentials.jwt(jwt);
 
-      setUser(user); // Connect to the database
+      try {
+        const res = await fetch("/api/getjwt");
+        const jwt = res.json();
 
-      const mongodb = app.currentUser.mongoClient("mongodb-atlas");
-      const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
+        const credentials = Realm.Credentials.jwt(jwt);
+        const user = await app.logIn(credentials);
+        console.log("Successfully logged in!", user.id);
 
-      for await (const change of collection.watch()) {
-        setEvents((events) => [...events, change]);
+        setUser(user); // Connect to the database
+
+        const mongodb = app.currentUser.mongoClient("mongodb-atlas");
+        const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
+
+        for await (const change of collection.watch()) {
+          setEvents((events) => [...events, change]);
+        }
+      } catch (err) {
+        console.error("Failed to log in", err.message);
       }
     };
     login();
