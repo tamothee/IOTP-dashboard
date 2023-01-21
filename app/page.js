@@ -24,11 +24,11 @@ const HomePage = () => {
   useEffect(() => {
     const login = async () => {
       // Authenticate anonymously
-      const user = await app.logIn(Realm.Credentials.anonymous());
+      // const user = await app.logIn(Realm.Credentials.anonymous());
 
       //authenticate with jwt
       // const jwt = await useSession;
-      // const user = Realm.Credentials.jwt(jwt);
+      const user = Realm.Credentials.jwt(session);
 
       setUser(user); // Connect to the database
 
