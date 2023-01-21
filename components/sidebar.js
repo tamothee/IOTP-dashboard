@@ -19,6 +19,8 @@ import Typography from "@mui/material/Typography";
 
 import Image from "next/image";
 import SP from "../public/sp_logo_dark_mode.png";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { signOut } from "next-auth/react";
 
 const drawerWidth = 240;
 
@@ -90,6 +92,9 @@ function ResponsiveDrawer(props) {
           <Typography variant="h6" noWrap component="div">
             IOTP
           </Typography>
+          <IconButton style={{marginLeft: "auto"}} onClick={()=> signOut()}>
+            <LogoutIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Box
