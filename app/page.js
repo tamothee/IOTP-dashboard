@@ -1,5 +1,6 @@
 "use client"; //do not remove pls
 
+import { useSession } from "next-auth/react";
 import React, { useState, useEffect } from "react";
 import * as Realm from "realm-web";
 const {
@@ -15,6 +16,8 @@ const HomePage = () => {
   // Set state variables
   const [user, setUser] = useState();
   const [events, setEvents] = useState([]);
+  const { data: session, status } = useSession();
+  console.log("session", session)
 
   // This useEffect hook will run only once when the page is loaded
   useEffect(() => {
