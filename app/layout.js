@@ -3,6 +3,15 @@
 import { SessionProvider } from "next-auth/react";
 import SideBar from "../components/sidebar";
 
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
+
 export default function RootLayout({ children, ...props }) {
   console.log("layout", { props }); // empty
 
@@ -11,7 +20,12 @@ export default function RootLayout({ children, ...props }) {
       <head></head>
       <body>
         <SessionProvider session={props.session}>
-          <SideBar>{children}</SideBar>
+          <ThemeProvider theme={darkTheme}>
+            <CssBaseline />
+            <main>
+              <SideBar>{children}</SideBar>
+            </main>
+          </ThemeProvider>
         </SessionProvider>
       </body>
     </html>
