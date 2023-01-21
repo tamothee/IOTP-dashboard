@@ -29,7 +29,7 @@ const HomePage = () => {
       // const jwt = await useSession;
       // const user = Realm.Credentials.jwt(session.user.email);
 
-      console.log(session.accessToken)
+      console.log(session)
 
       setUser(user); // Connect to the database
 
