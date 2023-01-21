@@ -17,6 +17,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+import Image from 'next/image';
+import SP from '../public/sp_logo.png'
+
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -29,6 +32,7 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
+      <Image src={SP} style={{width: '100%'}}/>
       <Toolbar />
       <Divider />
       <List>
@@ -82,7 +86,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+            IOTP
           </Typography>
         </Toolbar>
       </AppBar>
