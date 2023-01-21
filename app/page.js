@@ -1,6 +1,6 @@
 "use client"
 
-import { useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import React, { useState, useEffect } from "react";
 import * as Realm from "realm-web";
 const {
@@ -16,9 +16,6 @@ const HomePage = () => {
   // Set state variables
   const [user, setUser] = useState();
   const [events, setEvents] = useState([]);
-  const { data: session, status } = useSession();
-  console.log("status",status)
-  console.log("session",session)
 
   // This useEffect hook will run only once when the page is loaded
   useEffect(() => {
@@ -29,6 +26,9 @@ const HomePage = () => {
       //authenticate with jwt
       // const jwt = await useSession;
       // const user = Realm.Credentials.jwt(session.user.email);
+
+      const session = await getSession();
+      console.log(session)
 
       setUser(user); // Connect to the database
 
