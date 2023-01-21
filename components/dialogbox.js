@@ -7,8 +7,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { signOut } from 'next-auth/react';
 
-export default function AlertDialog({open}) {
-  const [open, setOpen] = React.useState(open);
+export default function AlertDialog() {
+  const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -20,9 +20,6 @@ export default function AlertDialog({open}) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open alert dialog
-      </Button>
       <Dialog
         open={open}
         onClose={handleClose}
