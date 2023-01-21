@@ -1,6 +1,5 @@
 "use client"; //do not remove pls
 
-import { useSession } from "next-auth/react";
 import React, { useState, useEffect } from "react";
 import * as Realm from "realm-web";
 const {
