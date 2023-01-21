@@ -20,12 +20,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
 //imports for dialog box which asks if you want to log out
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 import Image from "next/image";
 import SP from "../public/sp_logo_dark_mode.png";
@@ -45,12 +45,12 @@ function ResponsiveDrawer(props) {
   };
 
   //handle opening and closing of dialog boxes
-  const openAlert = ()=>{
-    setAlert(true)
-  }
-  const closeAlert = ()=>{
-    setAlert(false)
-  }
+  const openAlert = () => {
+    setAlert(true);
+  };
+  const closeAlert = () => {
+    setAlert(false);
+  };
 
   const drawer = (
     <div>
@@ -112,10 +112,7 @@ function ResponsiveDrawer(props) {
           <Typography variant="h6" noWrap component="div">
             IOTP
           </Typography>
-          <IconButton
-            style={{ marginLeft: "auto" }}
-            onClick={openAlert}
-          >
+          <IconButton style={{ marginLeft: "auto" }} onClick={openAlert}>
             <LogoutIcon />
           </IconButton>
         </Toolbar>
@@ -168,6 +165,7 @@ function ResponsiveDrawer(props) {
       >
         <Toolbar />
         {/* when logout is pressed, alert dialog comes out */}
+        <div>
           <Dialog
             open={alert}
             onClose={closeAlert}
@@ -184,11 +182,13 @@ function ResponsiveDrawer(props) {
             </DialogContent>
             <DialogActions>
               <Button onClick={closeAlert}>Cancel</Button>
-              <Button onClick={()=>signOut()} autoFocus>
+              <Button onClick={() => signOut()} autoFocus>
                 OK
               </Button>
             </DialogActions>
           </Dialog>
+        </div>
+
         {/* children is all the other routes passed through here */}
         {props.children}
       </Box>
