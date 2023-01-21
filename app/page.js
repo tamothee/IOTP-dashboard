@@ -28,10 +28,7 @@ const HomePage = () => {
       //authenticate with jwt
 
       try {
-        const res = await fetch("/api/getjwt");
-        const jwt = res.json();
-        console.log(jwt);
-
+        const jwt = session.accessToken;
         const credentials = Realm.Credentials.jwt(jwt);
         const user = await app.logIn(credentials);
         console.log("Successfully logged in!", user.id);
