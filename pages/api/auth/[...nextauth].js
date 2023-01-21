@@ -14,7 +14,7 @@ export const authOptions = {
   ],
   session: {
     // Set to jwt in order to CredentialsProvider works properly
-    strategy: 'jwt'
+    jwt:true
   },
   callbacks: {
     async jwt({ token, account, profile }) {
@@ -24,7 +24,7 @@ export const authOptions = {
         token.id = profile.id;
         console.log("token",token)
       }
-      return token;
+      return Promise.resolve(token);
     },
   },
   async session({ session, token, user }) {
@@ -33,7 +33,7 @@ export const authOptions = {
     session.user.id = token.id
     console.log("session", session)
     
-    return session
+    return Promise.resolve(session);
   }
 };
 export default NextAuth(authOptions);
