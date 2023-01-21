@@ -1,43 +1,43 @@
-import NextAuth from "next-auth";
-import Auth0Provider from "next-auth/providers/auth0";
+import NextAuth from 'next-auth';
+import Auth0Provider from 'next-auth/providers/auth0';
 
-export const authOptions = {
-  // Configure one or more authentication providers
+export default NextAuth({
   providers: [
     Auth0Provider({
       clientId: process.env.AUTH0_CLIENT_ID,
       clientSecret: process.env.AUTH0_CLIENT_SECRET,
       issuer: process.env.AUTH0_ISSUER,
-    }),
-    // ...add more providers here
+      audience: process.env.AUTH0_AUDIENCE,
+      idToken: true,
+      authorization: {
+        params: {
+          audience: encodeURI(process.env.AUTH0_AUDIENCE)
+        }
+      }
+    })
   ],
   callbacks: {
-    async jwt({ token, account, profile }) {
-      // Persist the OAuth access_token and or the user id to the token right after signin
-      console.log("here");
-      console.log(token);
-      console.log(user);
-      const isSignIn = account ? true : false;
-      // Add auth_time to token on signin in
-      if (isSignIn) {
-        token.auth_time = Math.floor(Date.now() / 1000);
+    session: async ({ session, token }) => {
+      if (token) {
+        session.user = token.user;
+        session.accessToken = token.accessToken;
+        session.error = token.error;
       }
-      return Promise.resolve(token);
-    },
-    async session({ session, token, user }) {
-      // Send properties to the client, like an access_token and user id from a provider.
-      console.log("here2");
-      console.log(token);
-      console.log(session);
-      if (!session?.user || !token?.account) {
-        return session;
-      }
-
-      session.user.id = token.account.id;
-      session.accessToken = token.account.accessToken;
-
       return session;
     },
+    async jwt({ token, account }) {
+      // Persist the OAuth access_token to the token right after signin
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+
+      return token;
+    }
   },
-};
-export default NextAuth(authOptions);
+
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    jwt: true,
+    secret: process.env.NEXTAUTH_SECRET
+  }
+});
