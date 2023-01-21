@@ -12,19 +12,31 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  session: { jwt: true },
   callbacks: {
     async jwt({ token, account, profile }) {
       // Persist the OAuth access_token and or the user id to the token right after signin
-      if (account) {
-        token.accessToken = account.access_token;
-        token.id = profile.id;
+      console.log("here");
+      console.log(token);
+      console.log(user);
+      const isSignIn = account ? true : false;
+      // Add auth_time to token on signin in
+      if (isSignIn) {
+        token.auth_time = Math.floor(Date.now() / 1000);
       }
-      return token;
+      return Promise.resolve(token);
     },
     async session({ session, token, user }) {
       // Send properties to the client, like an access_token and user id from a provider.
-      session.accessToken = token.accessToken;
-      session.user.id = token.id;
+      console.log("here2");
+      console.log(token);
+      console.log(session);
+      if (!session?.user || !token?.account) {
+        return session;
+      }
+
+      session.user.id = token.account.id;
+      session.accessToken = token.account.accessToken;
 
       return session;
     },
