@@ -160,10 +160,10 @@ function ResponsiveDrawer(props) {
         }}
       >
         <Toolbar />
-        {openAlert && (
+        {/* when logout is pressed, alert dialog comes out */}
           <Dialog
-            open={open}
-            onClose={handleClose}
+            open={openAlert}
+            onClose={()=>setOpenAlert(false)}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
@@ -176,13 +176,13 @@ function ResponsiveDrawer(props) {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose}>Cancel</Button>
+              <Button onClick={()=>setOpenAlert(false)}>Cancel</Button>
               <Button onClick={signOut} autoFocus>
                 OK
               </Button>
             </DialogActions>
           </Dialog>
-        )}
+        {/* children is all the other routes passed through here */}
         {props.children}
       </Box>
     </Box>
