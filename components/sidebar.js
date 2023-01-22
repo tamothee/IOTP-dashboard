@@ -112,7 +112,7 @@ function ResponsiveDrawer(props) {
           <Typography variant="h6" noWrap component="div">
             IOTP
           </Typography>
-          <IconButton style={{ marginLeft: "auto" }} onClick={openAlert}>
+          <IconButton style={{ marginLeft: "auto" }} onClick={()=>openAlert()}>
             <LogoutIcon />
           </IconButton>
         </Toolbar>
@@ -165,7 +165,7 @@ function ResponsiveDrawer(props) {
       >
         <Toolbar />
         {/* when logout is pressed, alert dialog comes out */}
-        {/* <div>
+        <div>
           <Dialog
             open={alert}
             onClose={closeAlert}
@@ -187,7 +187,7 @@ function ResponsiveDrawer(props) {
               </Button>
             </DialogActions>
           </Dialog>
-        </div> */}
+        </div>
 
         {/* children is all the other routes passed through here */}
         {props.children}
