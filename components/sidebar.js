@@ -45,10 +45,10 @@ function ResponsiveDrawer(props) {
   };
 
   //handle opening and closing of dialog boxes
-  const openAlert = () => {
+  function openAlert() {
     setAlert(true);
   };
-  const closeAlert = () => {
+  function closeAlert() {
     setAlert(false);
   };
 
@@ -112,7 +112,7 @@ function ResponsiveDrawer(props) {
           <Typography variant="h6" noWrap component="div">
             IOTP
           </Typography>
-          <IconButton style={{ marginLeft: "auto" }} onClick={()=>signOut()}>
+          <IconButton style={{ marginLeft: "auto" }} onClick={()=>openAlert()}>
             <LogoutIcon />
           </IconButton>
         </Toolbar>
@@ -181,7 +181,7 @@ function ResponsiveDrawer(props) {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={closeAlert}>Cancel</Button>
+              <Button onClick={()=>closeAlert}>Cancel</Button>
               <Button onClick={() => signOut()} autoFocus>
                 OK
               </Button>
