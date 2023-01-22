@@ -112,7 +112,7 @@ function ResponsiveDrawer(props) {
           <Typography variant="h6" noWrap component="div">
             IOTP
           </Typography>
-          <IconButton style={{ marginLeft: "auto" }} onClick={()=>openAlert()}>
+          <IconButton style={{ marginLeft: "auto" }} onClick={()=>signOut()}>
             <LogoutIcon />
           </IconButton>
         </Toolbar>
