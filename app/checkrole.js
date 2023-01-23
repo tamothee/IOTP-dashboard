@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 export const userRoleContext = createContext();
 
-export default function CheckRole() {
+export default function CheckRole({children}) {
   const role = "admin";
   return (
     <div>
