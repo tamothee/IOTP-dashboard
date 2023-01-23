@@ -69,7 +69,7 @@ const HomePage = () => {
     <div className="App">
       {!!user && (
         <div className="App-header">
-          <h1>Connected as user ${user.email}</h1>
+          <h1>Connected as user ${user.id}</h1>
           <div>
             <p>Latest events:</p>
             <table>
