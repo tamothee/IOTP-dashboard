@@ -31,13 +31,15 @@ const HomePage = () => {
       try {
         const jwt = session.accessToken;
         const credentials = Realm.Credentials.jwt(jwt);
-        const user = await app.logIn(credentials).then((user)=>{
-          user.applyRole(role)
-        });
+        const user = await app.logIn(credentials)
+        // .then((user)=>{
+        //   user.applyRole(role)
+        // });
         console.log("Successfully logged in!", user.email);
 
-        setUser(user); // Connect to the database
+        setUser(user);
 
+        //connect to database
         const mongodb = app.currentUser.mongoClient("mongodb-atlas");
         const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
 
