@@ -19,14 +19,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-//imports for dialog box which asks if you want to log out
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-
 import Image from "next/image";
 import SP from "../public/sp_logo_dark_mode.png";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -37,7 +29,7 @@ const drawerWidth = 240;
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  
+
   //open and close the drawer for mobile users
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
