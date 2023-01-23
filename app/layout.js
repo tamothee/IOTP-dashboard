@@ -5,7 +5,6 @@ import SideBar from "../components/sidebar";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { createContext, useContext } from "react";
 
 const darkTheme = createTheme({
   palette: {
@@ -13,11 +12,8 @@ const darkTheme = createTheme({
   },
 });
 
-export const userRoleContext = createContext();
 
 export default function RootLayout({ children, ...props }) {
-
-  const role = 'admin';
 
   return (
     <html>
@@ -25,12 +21,12 @@ export default function RootLayout({ children, ...props }) {
       <body>
         <SessionProvider session={props.session}>
           <ThemeProvider theme={darkTheme}>
-            <userRoleContext.Provider value={role}> {/*allow children to access user role*/}
+            <CheckRole>
               <CssBaseline />
               <main>
                 <SideBar>{children}</SideBar>
               </main>
-            </userRoleContext.Provider>
+            </CheckRole>
           </ThemeProvider>
         </SessionProvider>
       </body>
