@@ -19,17 +19,15 @@ const HomePage = () => {
   const [events, setEvents] = useState([]);
   const { data: session, status } = useSession();
   const role = useContext(userRoleContext);
+  console.log(role)
   console.log("session", session);
   console.log("status", status);
 
   // This useEffect hook will run only once when the page is loaded
   useEffect(() => {
     const login = async () => {
-      // Authenticate anonymously
-      // const user = await app.logIn(Realm.Credentials.anonymous());
 
       //authenticate with jwt
-
       try {
         const jwt = session.accessToken;
         const credentials = Realm.Credentials.jwt(jwt);
