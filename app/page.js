@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useState, useEffect, useContext } from "react";
 import * as Realm from "realm-web";
+import { userRoleContext } from "./layout";
 const {
   BSON: { ObjectId },
 } = Realm;
@@ -17,7 +18,7 @@ const HomePage = () => {
   const [user, setUser] = useState();
   const [events, setEvents] = useState([]);
   const { data: session, status } = useSession();
-  const role = useContext(userRole);
+  const role = useContext(userRoleContext);
   console.log("session", session);
   console.log("status", status);
 
@@ -68,7 +69,7 @@ const HomePage = () => {
     <div className="App">
       {!!user && (
         <div className="App-header">
-          <h1>Connected as user ${user.id}</h1>
+          <h1>Connected as user ${user.email}</h1>
           <div>
             <p>Latest events:</p>
             <table>

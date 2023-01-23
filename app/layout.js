@@ -13,7 +13,7 @@ const darkTheme = createTheme({
   },
 });
 
-const userRole = createContext();
+export const userRoleContext = createContext();
 
 export default function RootLayout({ children, ...props }) {
 
@@ -25,12 +25,12 @@ export default function RootLayout({ children, ...props }) {
       <body>
         <SessionProvider session={props.session}>
           <ThemeProvider theme={darkTheme}>
-            <userRole.Provider value={role}> {/*allow children to access user role*/}
+            <userRoleContext.Provider value={role}> {/*allow children to access user role*/}
               <CssBaseline />
               <main>
                 <SideBar>{children}</SideBar>
               </main>
-            </userRole.Provider>
+            </userRoleContext.Provider>
           </ThemeProvider>
         </SessionProvider>
       </body>
