@@ -5,6 +5,7 @@ import SideBar from "../components/sidebar";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import CheckRole from "./checkrole";
 
 const darkTheme = createTheme({
   palette: {
