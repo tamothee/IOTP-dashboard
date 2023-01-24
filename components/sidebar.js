@@ -101,14 +101,13 @@ function ResponsiveDrawer(props) {
           </Typography>
           <IconButton
             style={{ marginLeft: "auto" }}
-            onClick={ async () => {
-              try{
+            onClick={async () => {
+              try {
                 await app.currentUser.logOut();
-              signOut();
-              }catch{
-                console.error()
+                signOut();
+              } catch (error) {
+                console.error(error);
               }
-              
             }}
           >
             <LogoutIcon />
