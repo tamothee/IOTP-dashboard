@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { createContext, useEffect, useState } from "react";
+import * as Realm from "realm-web";
 
 const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID });
 
