@@ -14,6 +14,8 @@ Coded by www.creative-tim.com
 */
 
 // @mui material components
+
+import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import Icon from "@mui/material/Icon";
@@ -67,5 +69,46 @@ function CustomCard({ color, title, count, percentage, icon }) {
     </Card>
   );
 }
+
+// Setting default values for the props of ComplexStatisticsCard
+ComplexStatisticsCard.defaultProps = {
+    color: "info",
+    percentage: {
+      color: "success",
+      text: "",
+      label: "",
+    },
+  };
+  
+  // Typechecking props for the ComplexStatisticsCard
+  ComplexStatisticsCard.propTypes = {
+    color: PropTypes.oneOf([
+      "primary",
+      "secondary",
+      "info",
+      "success",
+      "warning",
+      "error",
+      "light",
+      "dark",
+    ]),
+    title: PropTypes.string.isRequired,
+    count: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    percentage: PropTypes.shape({
+      color: PropTypes.oneOf([
+        "primary",
+        "secondary",
+        "info",
+        "success",
+        "warning",
+        "error",
+        "dark",
+        "white",
+      ]),
+      amount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      label: PropTypes.string,
+    }),
+    icon: PropTypes.node.isRequired,
+  };
 
 export default CustomCard;
