@@ -21,16 +21,22 @@ import PropTypes from "prop-types";
 // Custom styles for MDTypography
 import MDTypographyRoot from "./typographyroot";
 
-// Material Dashboard 2 React contexts
-import { useMaterialUIController } from "context";
 
 const MDTypography = forwardRef(
   (
-    { color, fontWeight, textTransform, verticalAlign, textGradient, opacity, children, ...rest },
+    {
+      color,
+      fontWeight,
+      textTransform,
+      verticalAlign,
+      textGradient,
+      opacity,
+      children,
+      ...rest
+    },
     ref
   ) => {
-    const [controller] = useMaterialUIController();
-    const { darkMode } = controller;
+    const { darkMode } = true;
 
     return (
       <MDTypographyRoot
@@ -78,7 +84,12 @@ MDTypography.propTypes = {
     "white",
   ]),
   fontWeight: PropTypes.oneOf([false, "light", "regular", "medium", "bold"]),
-  textTransform: PropTypes.oneOf(["none", "capitalize", "uppercase", "lowercase"]),
+  textTransform: PropTypes.oneOf([
+    "none",
+    "capitalize",
+    "uppercase",
+    "lowercase",
+  ]),
   verticalAlign: PropTypes.oneOf([
     "unset",
     "baseline",
