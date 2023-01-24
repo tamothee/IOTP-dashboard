@@ -40,11 +40,10 @@ const HomePage = () => {
         //connect to database
         const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
 
-        // for await (const change of collection.watch()) { //this code is for saving and logging all changes made when page is loaded 
-        //   setEvents((events) => [...events, change]);  
-        // }
-
-        setEvents(await collection.watch());
+        for await (const change of collection.watch()) { //this code is for saving and logging all changes made when page is loaded 
+          // setEvents((events) => [...events, change]);
+          setEvents(change);
+        }
 
       } catch (err) {
         console.error("Failed to log in", err.message);
