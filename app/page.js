@@ -71,7 +71,7 @@ const HomePage = () => {
   // Return the JSX that will generate HTML for the page
   return (
     <div className="App">
-      {!!events && (
+      {!!events && ( //check if events are loaded
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
               <Typography
