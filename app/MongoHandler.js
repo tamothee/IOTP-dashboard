@@ -24,7 +24,7 @@ export default function MongoHandler({ children }) {
         const credentials = Realm.Credentials.jwt(jwt);
         const user = await app.logIn(credentials);
 
-        console.log("Successfully logged in!", user.email);
+        console.log("Successfully logged in!", user.id);
 
         setUser(user);
 

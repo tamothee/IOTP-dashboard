@@ -14,7 +14,7 @@ const HomePage = () => {
   const [events, setEvents] = useState([]);
   const { data: session, status } = useSession();
   const {mongodb, user, permission, app} = useContext(mongodbContext);
-  console.log(mongodb);
+  console.log("mongodb",mongodb);
   console.log("session", session);
   console.log("status", status);
 
@@ -27,10 +27,7 @@ const HomePage = () => {
         // const jwt = session.accessToken;
         // const credentials = Realm.Credentials.jwt(jwt);
         // const user = await app.logIn(credentials)
-
-        console.log("Successfully logged in!", user.id);
-
-        setUser(user);
+        // console.log("Successfully logged in!", user.id);
 
         //connect to database
         const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
