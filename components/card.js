@@ -19,8 +19,8 @@ import Divider from "@mui/material/Divider";
 import Icon from "@mui/material/Icon";
 
 // Material Dashboard 2 React components
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
+import MDBox from "./box/box";
+import MDTypography from "./typography/typography";
 
 function CustomCard({ color, title, count, percentage, icon }) {
   return (
