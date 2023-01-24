@@ -73,30 +73,6 @@ const HomePage = () => {
   return (
     <div className="App">
       {!!user && (
-        <div className="App-header">
-          <h1>Connected as user ${user.id}</h1>
-          <div>
-            <p>Latest events:</p>
-            <table>
-              <thead>
-                <tr>
-                  <td>Operation</td>
-                  <td>Document Key</td>
-                  <td>Full Document</td>
-                </tr>
-              </thead>
-              <tbody>
-                {events.map((e, i) => (
-                  <tr key={i}>
-                    {console.log(e)}
-                    <td>{e.operationType}</td>
-                    <td>{e.documentKey._id.toString()}</td>
-                    <td>{JSON.stringify(e.fullDocument)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
               <Typography
@@ -106,13 +82,12 @@ const HomePage = () => {
                 Number Of People
               </Typography>
               <Typography variant="body2">
-                well meaning and kindly.
+                {events}
                 <br />
                 {'"a benevolent smile"'}
               </Typography>
             </CardContent>
           </Card>
-        </div>
       )}
       <button onClick={write}>write</button>
     </div>
