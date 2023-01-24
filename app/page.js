@@ -44,7 +44,7 @@ const HomePage = () => {
         //   setEvents((events) => [...events, change]);  
         // }
 
-        setEvents(collection.watch());
+        setEvents(await collection.watch());
 
       } catch (err) {
         console.error("Failed to log in", err.message);
