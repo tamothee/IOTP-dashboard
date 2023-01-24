@@ -81,9 +81,9 @@ const HomePage = () => {
                 Number Of People
               </Typography>
               <Typography variant="body2">
-                {console.log(events)}
+                {events.fullDocument.value}
                 <br />
-                {'"a benevolent smile"'}
+                {events.fullDocument.timestamp}
               </Typography>
             </CardContent>
           </Card>
