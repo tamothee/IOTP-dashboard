@@ -25,12 +25,14 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
 
 import * as Realm from "realm-web";
+import { mongodbContext } from "../app/MongoHandler";
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { mongodb, user, permission, app } = useContext(mongodbContext);
 
   //open and close the drawer for mobile users
   const handleDrawerToggle = () => {
@@ -99,7 +101,15 @@ function ResponsiveDrawer(props) {
           </Typography>
           <IconButton
             style={{ marginLeft: "auto" }}
-            onClick={()=>signOut()}
+            onClick={ async () => {
+              try{
+                await app.currentUser.logOut();
+              signOut();
+              }catch{
+                console.error()
+              }
+              
+            }}
           >
             <LogoutIcon />
           </IconButton>
