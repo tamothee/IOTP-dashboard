@@ -81,8 +81,11 @@ const HomePage = () => {
                 Number Of People
               </Typography>
               <Typography variant="body2">
-                {!!events ? events.fullDocument.value: "Waiting for update"}
-                <br />
+                {!!events ? <div>
+                  {events.fullDocument.value}
+                   <br/>
+                   {events.fullDocument.timestamp[0]}
+                </div>: "Waiting for update"}
                 {/* {events?.fullDocument.timestamp} */}
                 {console.log(events)}
               </Typography>
