@@ -32,7 +32,7 @@ const drawerWidth = 240;
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const { mongodb, user, permission, app } = useContext(mongodbContext);
+  const { mongodb, user, permission, app } = React.useContext(mongodbContext);
 
   //open and close the drawer for mobile users
   const handleDrawerToggle = () => {
