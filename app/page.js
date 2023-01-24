@@ -5,6 +5,23 @@ import { useState, useEffect, useContext } from "react";
 import * as Realm from "realm-web";
 import { mongodbContext } from "./MongoHandler";
 
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+
+//for card component
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
+  >
+    •
+  </Box>
+);
+
 // Create the Application
 
 // Define the App component
@@ -14,20 +31,12 @@ const HomePage = () => {
   const [events, setEvents] = useState([]);
   const { data: session, status } = useSession();
   const { mongodb, user, permission, app } = useContext(mongodbContext);
-  console.log("mongodb", mongodb);
-  console.log("session", session);
-  console.log("status", status);
 
-  // This useEffect hook will run only once when the page is loaded
+  // This useEffect hook will run only once when the page is loaded and when
+  // mongodb connection is established
   useEffect(() => {
     const login = async () => {
-      //authenticate with jwt
       try {
-        // const jwt = session.accessToken;
-        // const credentials = Realm.Credentials.jwt(jwt);
-        // const user = await app.logIn(credentials)
-        // console.log("Successfully logged in!", user.id);
-
         //connect to database
         const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
 
@@ -76,6 +85,7 @@ const HomePage = () => {
               <tbody>
                 {events.map((e, i) => (
                   <tr key={i}>
+                    {console.log(e)}
                     <td>{e.operationType}</td>
                     <td>{e.documentKey._id.toString()}</td>
                     <td>{JSON.stringify(e.fullDocument)}</td>
@@ -84,6 +94,31 @@ const HomePage = () => {
               </tbody>
             </table>
           </div>
+          <Card sx={{ minWidth: 275 }}>
+            <CardContent>
+              <Typography
+                sx={{ fontSize: 14 }}
+                color="text.secondary"
+                gutterBottom
+              >
+                Word of the Day
+              </Typography>
+              <Typography variant="h5" component="div">
+                be{bull}nev{bull}o{bull}lent
+              </Typography>
+              <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                adjective
+              </Typography>
+              <Typography variant="body2">
+                well meaning and kindly.
+                <br />
+                {'"a benevolent smile"'}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
         </div>
       )}
       <button onClick={write}>write</button>
