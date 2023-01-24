@@ -71,7 +71,7 @@ function CustomCard({ color, title, count, percentage, icon }) {
 }
 
 // Setting default values for the props of ComplexStatisticsCard
-ComplexStatisticsCard.defaultProps = {
+CustomCard.defaultProps = {
     color: "info",
     percentage: {
       color: "success",
@@ -81,7 +81,7 @@ ComplexStatisticsCard.defaultProps = {
   };
   
   // Typechecking props for the ComplexStatisticsCard
-  ComplexStatisticsCard.propTypes = {
+  CustomCard.propTypes = {
     color: PropTypes.oneOf([
       "primary",
       "secondary",
