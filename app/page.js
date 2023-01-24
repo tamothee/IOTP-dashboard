@@ -28,7 +28,7 @@ const bull = (
 
 const HomePage = () => {
   // Set state variables
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState();
   const { data: session, status } = useSession();
   const { mongodb, user, permission, app } = useContext(mongodbContext);
 
@@ -71,7 +71,7 @@ const HomePage = () => {
   // Return the JSX that will generate HTML for the page
   return (
     <div className="App">
-      {!!events && ( //check if events are loaded
+      {!!user && ( //check if user is loaded
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
               <Typography
@@ -81,9 +81,9 @@ const HomePage = () => {
                 Number Of People
               </Typography>
               <Typography variant="body2">
-                {events.fullDocument.value}
+                {events?.fullDocument.value}
                 <br />
-                {events.fullDocument.timestamp}
+                {events?.fullDocument.timestamp}
               </Typography>
             </CardContent>
           </Card>
