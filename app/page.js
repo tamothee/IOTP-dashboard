@@ -82,7 +82,7 @@ const HomePage = () => {
                 Number Of People
               </Typography>
               <Typography variant="body2">
-                {events}
+                {console.log(events)}
                 <br />
                 {'"a benevolent smile"'}
               </Typography>
