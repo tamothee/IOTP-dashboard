@@ -63,4 +63,7 @@ MDBox.propTypes = {
   ]),
 };
 
+
+MDBox.displayName = 'MDBox';
+
 export default MDBox;
