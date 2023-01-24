@@ -39,10 +39,10 @@ const HomePage = () => {
         console.error("Failed to log in", err.message);
       }
     };
-    if (status === "authenticated") {
+    if (mongodb) {
       login();
     }
-  }, [status]);
+  }, [mongodb]);
 
   function write() {
     const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
