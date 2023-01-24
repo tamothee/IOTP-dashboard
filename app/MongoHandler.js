@@ -42,7 +42,7 @@ export default function MongoHandler({ children }) {
 
   return (
     <div>
-      <mongodbContext.Provider value={[mongodb, user, permission, app]}>
+      <mongodbContext.Provider value={{mongodb, user, permission, app}}>
         {children}
       </mongodbContext.Provider>
     </div>
