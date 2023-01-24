@@ -40,9 +40,12 @@ const HomePage = () => {
         //connect to database
         const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
 
-        for await (const change of collection.watch()) {
-          setEvents((events) => [...events, change]);
-        }
+        // for await (const change of collection.watch()) { //this code is for saving and logging all changes made when page is loaded 
+        //   setEvents((events) => [...events, change]);  
+        // }
+
+        setEvents(collection.watch());
+
       } catch (err) {
         console.error("Failed to log in", err.message);
       }
@@ -97,17 +100,10 @@ const HomePage = () => {
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
               <Typography
-                sx={{ fontSize: 14 }}
-                color="text.secondary"
+                variant="h5"
                 gutterBottom
               >
-                Word of the Day
-              </Typography>
-              <Typography variant="h5" component="div">
-                be{bull}nev{bull}o{bull}lent
-              </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                adjective
+                Number Of People
               </Typography>
               <Typography variant="body2">
                 well meaning and kindly.
@@ -115,9 +111,6 @@ const HomePage = () => {
                 {'"a benevolent smile"'}
               </Typography>
             </CardContent>
-            <CardActions>
-              <Button size="small">Learn More</Button>
-            </CardActions>
           </Card>
         </div>
       )}
