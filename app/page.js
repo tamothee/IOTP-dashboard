@@ -11,10 +11,9 @@ import { mongodbContext } from "./MongoHandler";
 
 const HomePage = () => {
   // Set state variables
-  const [user, setUser] = useState();
   const [events, setEvents] = useState([]);
   const { data: session, status } = useSession();
-  const mongodb = useContext(mongodbContext);
+  const {mongodb, user, permission, app} = useContext(mongodbContext);
   console.log(mongodb);
   console.log("session", session);
   console.log("status", status);
@@ -25,11 +24,11 @@ const HomePage = () => {
 
       //authenticate with jwt
       try {
-        const jwt = session.accessToken;
-        const credentials = Realm.Credentials.jwt(jwt);
-        const user = await app.logIn(credentials)
+        // const jwt = session.accessToken;
+        // const credentials = Realm.Credentials.jwt(jwt);
+        // const user = await app.logIn(credentials)
 
-        console.log("Successfully logged in!", user.email);
+        console.log("Successfully logged in!", user.id);
 
         setUser(user);
 

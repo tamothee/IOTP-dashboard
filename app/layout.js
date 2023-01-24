@@ -5,7 +5,7 @@ import SideBar from "../components/sidebar";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import CheckRole from "./MongoHandler";
+import MongoHandler from "./MongoHandler";
 
 const darkTheme = createTheme({
   palette: {
@@ -22,12 +22,12 @@ export default function RootLayout({ children, ...props }) {
       <body>
         <SessionProvider session={props.session}>
           <ThemeProvider theme={darkTheme}>
-            <CheckRole>
+            <MongoHandler>
               <CssBaseline />
               <main>
                 <SideBar>{children}</SideBar>
               </main>
-            </CheckRole>
+            </MongoHandler>
           </ThemeProvider>
         </SessionProvider>
       </body>
