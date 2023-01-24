@@ -24,6 +24,8 @@ import SP from "../public/sp_logo_dark_mode.png";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
 
+import * as Realm from "realm-web";
+
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {

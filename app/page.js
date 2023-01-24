@@ -3,11 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useState, useEffect, useContext } from "react";
 import * as Realm from "realm-web";
-import { userRoleContext } from "./checkrole";
-const {
-  BSON: { ObjectId },
-} = Realm;
-const app = new Realm.App({ id: process.env.NEXT_PUBLIC_APP_ID });
+import { mongodbContext } from "./MongoHandler";
 
 // Create the Application
 
@@ -18,8 +14,8 @@ const HomePage = () => {
   const [user, setUser] = useState();
   const [events, setEvents] = useState([]);
   const { data: session, status } = useSession();
-  const role = useContext(userRoleContext);
-  console.log(role)
+  const mongodb = useContext(mongodbContext);
+  console.log(mongodb);
   console.log("session", session);
   console.log("status", status);
 
@@ -32,15 +28,12 @@ const HomePage = () => {
         const jwt = session.accessToken;
         const credentials = Realm.Credentials.jwt(jwt);
         const user = await app.logIn(credentials)
-        // .then((user)=>{
-        //   user.applyRole(role)
-        // });
+
         console.log("Successfully logged in!", user.email);
 
         setUser(user);
 
         //connect to database
-        const mongodb = app.currentUser.mongoClient("mongodb-atlas");
         const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
 
         for await (const change of collection.watch()) {
@@ -56,7 +49,6 @@ const HomePage = () => {
   }, [status]);
 
   function write() {
-    const mongodb = app.currentUser.mongoClient("mongodb-atlas");
     const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
     collection.insertOne({
       timestamp: new Date(),
