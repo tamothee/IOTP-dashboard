@@ -13,15 +13,14 @@ const HomePage = () => {
   // Set state variables
   const [events, setEvents] = useState([]);
   const { data: session, status } = useSession();
-  const {mongodb, user, permission, app} = useContext(mongodbContext);
-  console.log("mongodb",mongodb);
+  const { mongodb, user, permission, app } = useContext(mongodbContext);
+  console.log("mongodb", mongodb);
   console.log("session", session);
   console.log("status", status);
 
   // This useEffect hook will run only once when the page is loaded
   useEffect(() => {
     const login = async () => {
-
       //authenticate with jwt
       try {
         // const jwt = session.accessToken;
@@ -40,16 +39,22 @@ const HomePage = () => {
       }
     };
     if (mongodb) {
+      //dont run watch when mongodb connection is not established
       login();
     }
   }, [mongodb]);
 
   function write() {
-    const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
-    collection.insertOne({
-      timestamp: new Date(),
-      value: 10000,
-    });
+    if (mongodb) {
+      //dont run watch when mongodb connection is not established
+      const collection = mongodb.db("data").collection("PeopleCount"); //insert into collection
+      collection.insertOne({
+        timestamp: new Date(),
+        value: 10000,
+      });
+    } else {
+      alert("Mongodb connection not established. Please try again");
+    }
   }
 
   // Return the JSX that will generate HTML for the page
