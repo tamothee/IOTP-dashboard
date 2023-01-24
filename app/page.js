@@ -84,7 +84,7 @@ const HomePage = () => {
                 {!!events ? <div>
                   {events.fullDocument.value}
                    <br/>
-                   {events.fullDocument.timestamp.JSON.stringify()}
+                   {JSON.stringify(events.fullDocument.timestamp)}
                 </div>: "Waiting for update"}
                 {/* {events?.fullDocument.timestamp} */}
                 {console.log(events)}
