@@ -84,7 +84,7 @@ const HomePage = () => {
                   {events.fullDocument.value}
                   <br />
                   <Divider/>
-                  <Typography color={text.secondary}>
+                  <Typography color={'text.secondary'}>
                     {Date(JSON.stringify(events.fullDocument.timestamp))}
                   </Typography>
                 </div>
