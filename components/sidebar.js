@@ -26,7 +26,6 @@ import { signOut } from "next-auth/react";
 
 import { mongodbContext } from "../app/MongoHandler";
 import { usePathname } from "next/router";
-import CustomBreadcrumb from "./breadcrumb";
 
 const drawerWidth = 240;
 
