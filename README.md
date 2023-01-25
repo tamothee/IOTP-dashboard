@@ -1,4 +1,4 @@
-You can check out a live demo of the app on https://iotp-dashboard.vercel.app/api/auth/signin?callbackUrl=%2F . It is hosted on vercel.
+You can check out a live demo of the app on https://iotp-dashboard.vercel.app/ . It is hosted on vercel.
 
 Steps to to run the code,
 
