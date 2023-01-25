@@ -11,7 +11,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Link from '@mui/material/Link';
+import Link from "next/link";
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 
 
@@ -65,7 +65,7 @@ const HomePage = () => {
   return (
     <div className="App">
       <Breadcrumbs aria-label="breadcrumb" style={{marginBottom: "10px"}}>
-        <Link underline="hover" color="inherit" href="/">
+        <Link style={{color:'inherit'}} underline="hover" color="inherit" href="/">
           Home
         </Link>
       </Breadcrumbs>
