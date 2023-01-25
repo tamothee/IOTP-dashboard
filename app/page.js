@@ -73,37 +73,26 @@ const HomePage = () => {
   return (
     <div className="App">
       {!!user  && ( //check if user is loaded
-        // <Card sx={{ minWidth: 275 }}>
-        //   <CardContent>
-        //     <Typography variant="h5" gutterBottom>
-        //       Number Of People
-        //     </Typography>
-        //     <Typography variant="body2">
-        //       {!!events ? (
-        //         <div>
-        //           {events.fullDocument.value}
-        //           <br />
-        //           {Date(JSON.stringify(events.fullDocument.timestamp))}
-        //         </div>
-        //       ) : (
-        //         "Waiting for update"
-        //       )}
-        //       {/* {events?.fullDocument.timestamp} */}
-        //       {console.log(events)}
-        //     </Typography>
-        //   </CardContent>
-        // </Card>
-        <CustomCard
-          color="dark"
-          icon="weekend"
-          title="Bookings"
-          count={!!events ? events.fullDocument.value:"Waiting for update"}
-          percentage={{
-            color: "success",
-            amount: "+55%",
-            label: "than lask week",
-          }}
-        />
+        <Card sx={{ minWidth: 275 }}>
+          <CardContent>
+            <Typography variant="h5" gutterBottom>
+              Number Of People
+            </Typography>
+            <Typography variant="body2">
+              {!!events ? (
+                <div>
+                  {events.fullDocument.value}
+                  <br />
+                  {Date(JSON.stringify(events.fullDocument.timestamp))}
+                </div>
+              ) : (
+                "Waiting for update"
+              )}
+              {/* {events?.fullDocument.timestamp} */}
+              {console.log(events)}
+            </Typography>
+          </CardContent>
+        </Card>
       )}
       <button onClick={write}>write</button>
     </div>
