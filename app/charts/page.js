@@ -1,3 +1,5 @@
+'use client'
+
 import Typography from "@mui/material/Typography";
 import Link from '@mui/material/Link';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
