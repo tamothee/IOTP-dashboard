@@ -65,7 +65,7 @@ const HomePage = () => {
   // Return the JSX that will generate HTML for the page
   return (
     <div className="App">
-      <Breadcrumbs aria-label="breadcrumb">
+      <Breadcrumbs aria-label="breadcrumb" style={{marginBottom: "10px"}}>
         <Link underline="hover" color="inherit" href="/">
           Home
         </Link>
@@ -80,7 +80,6 @@ const HomePage = () => {
               {!!events ? (
                 <div>
                   {events.fullDocument.value}
-                  <Divider />
                   <Typography color={"text.secondary"}>
                     {Date(JSON.stringify(events.fullDocument.timestamp))}
                   </Typography>
