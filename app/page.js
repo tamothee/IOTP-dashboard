@@ -11,7 +11,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import CustomCard from "../components/card";
+import { Divider } from "@mui/material";
 
 //for card component
 const bull = (
@@ -72,7 +72,7 @@ const HomePage = () => {
   // Return the JSX that will generate HTML for the page
   return (
     <div className="App">
-      {!!user  && ( //check if user is loaded
+      {!!user && ( //check if user is loaded
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
             <Typography variant="h5" gutterBottom>
@@ -83,12 +83,14 @@ const HomePage = () => {
                 <div>
                   {events.fullDocument.value}
                   <br />
-                  {Date(JSON.stringify(events.fullDocument.timestamp))}
+                  <Divider/>
+                  <Typography color={text.secondary}>
+                    {Date(JSON.stringify(events.fullDocument.timestamp))}
+                  </Typography>
                 </div>
               ) : (
                 "Waiting for update"
               )}
-              {/* {events?.fullDocument.timestamp} */}
               {console.log(events)}
             </Typography>
           </CardContent>
