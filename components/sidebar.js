@@ -25,7 +25,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
 
 import { mongodbContext } from "../app/MongoHandler";
-import { usePathname } from "next/router";
 
 const drawerWidth = 240;
 
@@ -33,8 +32,6 @@ function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { mongodb, user, permission, app } = React.useContext(mongodbContext);
-  const pathname = usePathname();
-
   //open and close the drawer for mobile users
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
