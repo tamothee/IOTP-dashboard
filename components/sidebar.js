@@ -55,7 +55,7 @@ function ResponsiveDrawer(props) {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <Link>{index % 2 === 0 ? <HomeIcon /> : <TimelineIcon />}</Link>
+                {index % 2 === 0 ? <Link href={'/'}><HomeIcon /> </Link>: <Link href={'/charts'}><TimelineIcon /></Link>}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
