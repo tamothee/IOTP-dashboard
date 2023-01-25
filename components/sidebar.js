@@ -52,8 +52,8 @@ function ResponsiveDrawer(props) {
       <Divider />
       <List>
         {["Home", "Charts"].map((text, index) => (
-          <Link href={index % 2 === 0 ? "/" : "/charts"} style={{color:"inherit"}}>
-            <ListItem key={text} disablePadding>
+          <Link key={text} href={index % 2 === 0 ? "/" : "/charts"} style={{color:"inherit"}}>
+            <ListItem  disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   {index % 2 === 0 ? <HomeIcon /> : <TimelineIcon />}
