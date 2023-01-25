@@ -72,6 +72,11 @@ const HomePage = () => {
   // Return the JSX that will generate HTML for the page
   return (
     <div className="App">
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/">
+          Home
+        </Link>
+      </Breadcrumbs>
       {!!user && ( //check if user is loaded
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
@@ -82,9 +87,8 @@ const HomePage = () => {
               {!!events ? (
                 <div>
                   {events.fullDocument.value}
-                  <br />
-                  <Divider/>
-                  <Typography color={'text.secondary'}>
+                  <Divider />
+                  <Typography color={"text.secondary"}>
                     {Date(JSON.stringify(events.fullDocument.timestamp))}
                   </Typography>
                 </div>

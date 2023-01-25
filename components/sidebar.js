@@ -24,8 +24,9 @@ import SP from "../public/sp_logo_dark_mode.png";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
 
-import * as Realm from "realm-web";
 import { mongodbContext } from "../app/MongoHandler";
+import { usePathname } from "next/router";
+import CustomBreadcrumb from "./breadcrumb";
 
 const drawerWidth = 240;
 
@@ -33,6 +34,7 @@ function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { mongodb, user, permission, app } = React.useContext(mongodbContext);
+  const pathname = usePathname();
 
   //open and close the drawer for mobile users
   const handleDrawerToggle = () => {
@@ -42,24 +44,15 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div>
       <Toolbar>
-        <Image alt="sp logo" src={SP} style={{ width: "100%", height: "auto" }} />
+        <Image
+          alt="sp logo"
+          src={SP}
+          style={{ width: "100%", height: "auto" }}
+        />
       </Toolbar>
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
+        {["Home", "Charts"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -161,7 +154,6 @@ function ResponsiveDrawer(props) {
         }}
       >
         <Toolbar />
-
         {/* children is all the other routes passed through here */}
         {props.children}
       </Box>
