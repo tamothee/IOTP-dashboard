@@ -18,8 +18,8 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import HomeIcon from '@mui/icons-material/Home';
-import TimelineIcon from '@mui/icons-material/Timeline';
+import HomeIcon from "@mui/icons-material/Home";
+import TimelineIcon from "@mui/icons-material/Timeline";
 
 import Image from "next/image";
 import SP from "../public/sp_logo_dark_mode.png";
@@ -27,6 +27,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
 
 import { mongodbContext } from "../app/MongoHandler";
+import Link from "next/link";
 
 const drawerWidth = 240;
 
@@ -54,7 +55,7 @@ function ResponsiveDrawer(props) {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <HomeIcon/> : <TimelineIcon />}
+                <Link>{index % 2 === 0 ? <HomeIcon /> : <TimelineIcon />}</Link>
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
