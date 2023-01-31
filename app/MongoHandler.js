@@ -11,7 +11,7 @@ export default function MongoHandler({ children }) {
   const permission = "admin";
   const [mongodb, setMongodb] = useState();
   const [user, setUser] = useState();
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession()
 
   // This useEffect hook will run only once when the page
   // is loaded and when status changes
