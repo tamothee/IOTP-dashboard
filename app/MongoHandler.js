@@ -20,7 +20,7 @@ export default function MongoHandler({ children }) {
       //authenticate with jwt
       try {
         const jwt = session.accessToken;
-        const credentials = Realm.Credentials.jwt('cock');
+        const credentials = Realm.Credentials.jwt(jwt);
         const user = await app.logIn(credentials);
 
         console.log("Successfully logged in!", user.id);
