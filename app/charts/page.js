@@ -92,6 +92,9 @@ export default function Chart() {
           datasets: [{
             label: "Number of people",
             data: result.map((data) => data.value),
+            backgroundColor: 'aqua',
+            borderColor: "white",
+            tension: 0.4,
           }],
         });
       } catch (err) {
