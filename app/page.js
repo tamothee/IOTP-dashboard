@@ -48,18 +48,18 @@ const HomePage = () => {
     }
   }, [mongodb]);
 
-  function write() {
-    if (mongodb) {
-      //dont run watch when mongodb connection is not established
-      const collection = mongodb.db("data").collection("PeopleCount"); //insert into collection
-      collection.insertOne({
-        timestamp: new Date(),
-        value: 10000,
-      });
-    } else {
-      alert("Mongodb connection not established. Please try again");
-    }
-  }
+  // function write() {
+  //   if (mongodb) {
+  //     //dont run watch when mongodb connection is not established
+  //     const collection = mongodb.db("data").collection("PeopleCount"); //insert into collection
+  //     collection.insertOne({
+  //       timestamp: new Date(),
+  //       value: 10000,
+  //     });
+  //   } else {
+  //     alert("Mongodb connection not established. Please try again");
+  //   }
+  // }
 
   // Return the JSX that will generate HTML for the page
   return (
@@ -91,7 +91,7 @@ const HomePage = () => {
           </CardContent>
         </Card>
       )}
-      <button onClick={write}>write</button>
+      {/* <button onClick={write}>write</button> */}
     </div>
   );
 };
