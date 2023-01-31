@@ -79,10 +79,10 @@ export default function Chart() {
   const [data, setData] = useState();
   const { mongodb, user, permission, app } = useContext(mongodbContext);
   useEffect(() => {
-    const login = async () => {
+    const query = async () => {
       try {
         //connect to database
-        const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
+        const collection = await mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
 
         const result = collection.find({}, { $sort: { _id: -1 } });
         console.log(result)
@@ -103,7 +103,7 @@ export default function Chart() {
     };
     if (mongodb) {
       //dont run watch when mongodb connection is not established
-      login();
+      query();
     }
   }, [mongodb]);
   return (
