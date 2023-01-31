@@ -10,14 +10,12 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
   Legend,
 } from "chart.js";
 import "chartjs-adapter-date-fns";
 import { Line } from "react-chartjs-2";
 
-import { faker } from "@faker-js/faker";
 
 import { mongodbContext } from "../MongoHandler";
 
@@ -26,22 +24,21 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
   Legend
 );
 
 export const options = {
   responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Chart.js Line Chart",
-    },
-  },
+  // plugins: {
+  //   legend: {
+  //     position: "top",
+  //   },
+  //   title: {
+  //     display: true,
+  //     text: "Number of people",
+  //   },
+  // },
   scales: {
     x: {
       type: "time",
