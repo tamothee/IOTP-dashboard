@@ -92,8 +92,8 @@ export default function Chart() {
           datasets: [{
             label: "Number of people",
             data: result.map((data) => data.value),
-            backgroundColor: 'aqua',
-            borderColor: "white",
+            backgroundColor: 'white',
+            borderColor: "aqua",
             tension: 0.4,
           }],
         });
