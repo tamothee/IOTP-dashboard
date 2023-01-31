@@ -89,10 +89,10 @@ export default function Chart() {
             console.log(data);
             return data.timestamp;
           }),
-          datasets: {
+          datasets: [{
             label: "Number of people",
             data: result.map((data) => data.value),
-          },
+          }],
         });
       } catch (err) {
         console.error("Failed to log in", err.message);
