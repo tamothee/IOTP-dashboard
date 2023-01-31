@@ -87,10 +87,13 @@ export default function Chart() {
         const result = collection.find({}, { $sort: { _id: -1 } });
 
         setData({
-          label: result.timestamp,
+          label: result.map((data) => {
+            console.log(data);
+            return data.timestamp;
+          }),
           datasets: {
             label: "Number of people",
-            data: result.value,
+            data: result.map((data) => data.value),
           },
         });
       } catch (err) {
