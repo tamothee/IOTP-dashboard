@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Breadcrumbs from "@mui/material/Breadcrumbs";
 import {
   Chart as ChartJS,
   TimeScale,
@@ -13,11 +13,11 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import 'chartjs-adapter-date-fns';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import "chartjs-adapter-date-fns";
+import { Line } from "react-chartjs-2";
 
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
 
 import { mongodbContext } from "../MongoHandler";
 
@@ -35,24 +35,24 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'top',
+      position: "top",
     },
     title: {
       display: true,
-      text: 'Chart.js Line Chart',
+      text: "Chart.js Line Chart",
     },
   },
-  scales:{
-    x:{
-      type: 'time',
-      time:{
-        unit: 'day'
-      }
+  scales: {
+    x: {
+      type: "time",
+      time: {
+        unit: "day",
+      },
     },
-    y:{
-      beginAtZero: true
-    }
-  }
+    y: {
+      beginAtZero: true,
+    },
+  },
 };
 
 // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
@@ -84,16 +84,15 @@ export default function Chart() {
         //connect to database
         const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
 
-        const result = collection.find({}).sort({_id:-1});
-        
+        const result = collection.find({}, { $sort: { _id: -1 } });
+
         setData({
           label: result.timestamp,
-          datasets:{
-            label: 'Number of people',
+          datasets: {
+            label: "Number of people",
             data: result.value,
-          }
-        })
-        
+          },
+        });
       } catch (err) {
         console.error("Failed to log in", err.message);
       }
@@ -106,10 +105,20 @@ export default function Chart() {
   return (
     <div>
       <Breadcrumbs aria-label="breadcrumb" style={{ marginBottom: "10px" }}>
-        <Link style={{color:'inherit'}} underline="hover" color="inherit" href="/">
+        <Link
+          style={{ color: "inherit" }}
+          underline="hover"
+          color="inherit"
+          href="/"
+        >
           Home
         </Link>
-        <Link style={{color:'inherit'}} underline="hover" color="inherit" href="/charts">
+        <Link
+          style={{ color: "inherit" }}
+          underline="hover"
+          color="inherit"
+          href="/charts"
+        >
           Chart
         </Link>
       </Breadcrumbs>
@@ -117,4 +126,3 @@ export default function Chart() {
     </div>
   );
 }
-
