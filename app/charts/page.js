@@ -85,7 +85,7 @@ export default function Chart() {
         console.log(result)
 
         setData({
-          label: result.map((data) => {
+          labels: result.map((data) => {
             console.log(data);
             return data.timestamp;
           }),
