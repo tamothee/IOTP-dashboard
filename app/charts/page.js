@@ -19,6 +19,8 @@ import { Line } from 'react-chartjs-2';
 
 import { faker } from '@faker-js/faker';
 
+import { mongodbContext } from "./MongoHandler";
+
 ChartJS.register(
   TimeScale,
   LinearScale,
