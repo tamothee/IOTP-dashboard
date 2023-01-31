@@ -85,6 +85,7 @@ export default function Chart() {
         const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
 
         const result = collection.find({}, { $sort: { _id: -1 } });
+        console.log(result)
 
         setData({
           label: result.map((data) => {
