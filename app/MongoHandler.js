@@ -28,7 +28,7 @@ export default function MongoHandler({ children }) {
         setUser(user);
 
         //connect to mongodb
-        setMongodb(app.currentUser.mongoClient("mongodb-atlas"));
+        setMongodb(app.currentUser.mongoClient("IOTP-shared"));
       } catch (err) {
         console.error("Failed to log in", err.message);
       }
