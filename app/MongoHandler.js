@@ -1,5 +1,4 @@
 "use client";
-import axios from "axios";
 import { useSession } from "next-auth/react";
 import { createContext, useEffect, useState } from "react";
 import * as Realm from "realm-web";
