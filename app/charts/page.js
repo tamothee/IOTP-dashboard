@@ -75,6 +75,7 @@ export const options = {
 
 export default function Chart() {
   const [data, setData] = useState();
+  const { mongodb, user, permission, app } = useContext(mongodbContext);
   useEffect(() => {
     const login = async () => {
       try {
