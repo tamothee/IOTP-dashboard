@@ -82,9 +82,9 @@ export default function Chart() {
     const query = async () => {
       try {
         //connect to database
-        const collection = await mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
+        const collection = mongodb.db("data").collection("PeopleCount"); // Everytime a change happens in the stream, add it to the list of events
 
-        const result = collection.find({}, { $sort: { _id: -1 } });
+        const result = await collection.find({}, { $sort: { _id: -1 } });
         console.log(result)
 
         setData({
