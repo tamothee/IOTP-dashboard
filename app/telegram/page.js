@@ -15,16 +15,14 @@ import { Box, Grid, IconButton } from "@mui/material";
 import { mongodbContext } from "../MongoHandler";
 
 export default function AddDevice() {
-  const [password, setpassword] = React.useState("");
   const [name, setName] = React.useState("");
   const [idPopup, setIdPopup] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [deviceId, setDeviceId] = React.useState("");
   const { mongodb, user, permission, app } = React.useContext(mongodbContext);
   async function write() {
     setLoading(true);
     if (user) {
-
+        
     }
     setLoading(false);
   }
@@ -35,35 +33,22 @@ export default function AddDevice() {
 
   return (
     <div>
-      <Dialog open={open} onClose={handleIdPopup}>
+      <Dialog open={idPopup} onClose={handleIdPopup}>
         <DialogTitle>Add Device</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To add a new device, please fill up the forms below.
+            Please Add in your telegram id to receive alerts
           </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
-            id="name-input"
-            label="Name"
+            id="telegramid-input"
+            label="Telegram ID"
             fullWidth
             variant="standard"
             value={name}
             onChange={(event) => {
               setName(event.target.value);
-            }}
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="password-input"
-            label="Password"
-            type="password"
-            fullWidth
-            variant="standard"
-            value={password}
-            onChange={(event) => {
-              setpassword(event.target.value);
             }}
           />
         </DialogContent>
@@ -72,45 +57,6 @@ export default function AddDevice() {
           <LoadingButton loading={loading} variant="contained" onClick={write}>
             Add
           </LoadingButton>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog open={idPopup} onClose={handleIdPopup}>
-        <DialogTitle>Device ID</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            <Grid justifyContent="center" alignItems="center" spacing={4}>
-              <div>
-                Your device has been successfully been inserted. This is your
-                Device ID. <b> DO NOT SHARE THIS WITH ANYONE.</b> Put this ID in
-                your device to pair with your account.
-              </div>
-              <Stack
-                direction={"row"}
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Box>{deviceId}</Box>
-                <IconButton
-                  onClick={() => {
-                    navigator.clipboard.writeText(deviceId);
-                  }}
-                >
-                  <ContentCopyIcon />
-                </IconButton>
-              </Stack>
-            </Grid>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={() => {
-              handleIdPopup();
-              window.location.reload();
-            }}
-          >
-            Ok
-          </Button>
         </DialogActions>
       </Dialog>
     </div>
