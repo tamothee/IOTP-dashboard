@@ -22,7 +22,7 @@ export default function AddDevice() {
   async function write() {
     setLoading(true);
     if (user) {
-        
+
     }
     setLoading(false);
   }
@@ -53,7 +53,7 @@ export default function AddDevice() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handlePopup}>Cancel</Button>
+          <Button onClick={handleIdPopup}>Cancel</Button>
           <LoadingButton loading={loading} variant="contained" onClick={write}>
             Add
           </LoadingButton>
