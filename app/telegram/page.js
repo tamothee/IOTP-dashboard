@@ -20,8 +20,7 @@ export default function AddDevice() {
   const [idPopup, setIdPopup] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [deviceId, setDeviceId] = React.useState("");
-  const { mongodb, user, permission, app } = useContext(mongodbContext);
-
+  const { mongodb, user, permission, app } = React.useContext(mongodbContext);
   async function write() {
     setLoading(true);
     if (user) {
