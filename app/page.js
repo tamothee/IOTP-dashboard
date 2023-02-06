@@ -12,8 +12,18 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Breadcrumbs from "@mui/material/Breadcrumbs";
 
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { Stack } from "@mui/system";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { Box, Grid, IconButton } from "@mui/material";
 
 // Create the Application
 
@@ -21,6 +31,10 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 
 const HomePage = () => {
   // Set state variables
+  const [name, setName] = useState("");
+  const [idPopup, setIdPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const [events, setEvents] = useState();
   const { data: session, status } = useSession();
   const { mongodb, user, permission, app } = useContext(mongodbContext);
@@ -61,14 +75,30 @@ const HomePage = () => {
   //   }
   // }
 
+  async function write() {
+    setLoading(true);
+    if (user) {
+    }
+    setLoading(false);
+  }
+  const handleIdPopup = () => {
+    setIdPopup(!idPopup);
+  };
+
   // Return the JSX that will generate HTML for the page
   return (
     <div className="App">
-      <Breadcrumbs aria-label="breadcrumb" style={{marginBottom: "10px"}}>
-        <Link style={{color:'inherit'}} underline="hover" color="inherit" href="/">
+      <Breadcrumbs aria-label="breadcrumb" style={{ marginBottom: "10px" }}>
+        <Link
+          style={{ color: "inherit" }}
+          underline="hover"
+          color="inherit"
+          href="/"
+        >
           Home
         </Link>
       </Breadcrumbs>
+      <Button onClick={handleIdPopup}>Add Telegram id</Button>
       {!!user && ( //check if user is loaded
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
@@ -92,6 +122,38 @@ const HomePage = () => {
         </Card>
       )}
       {/* <button onClick={write}>write</button> */}
+      <div>
+        <Dialog open={idPopup} onClose={handleIdPopup}>
+          <DialogTitle>Add Device</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Please Add in your telegram id to receive alerts
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="telegramid-input"
+              label="Telegram ID"
+              fullWidth
+              variant="standard"
+              value={name}
+              onChange={(event) => {
+                setName(event.target.value);
+              }}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleIdPopup}>Cancel</Button>
+            <LoadingButton
+              loading={loading}
+              variant="contained"
+              onClick={write}
+            >
+              Add
+            </LoadingButton>
+          </DialogActions>
+        </Dialog>
+      </div>
     </div>
   );
 };

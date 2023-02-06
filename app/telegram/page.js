@@ -59,6 +59,7 @@ export default function AddDevice() {
           </LoadingButton>
         </DialogActions>
       </Dialog>
+      <Button>Add Telegram id</Button>
     </div>
   );
 }
