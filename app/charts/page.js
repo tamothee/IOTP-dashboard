@@ -65,7 +65,6 @@ export default function Chart() {
             data: result.map((data) => data.value),
             backgroundColor: 'white',
             borderColor: "aqua",
-            tension: 0.4,
           }],
         });
       } catch (err) {
