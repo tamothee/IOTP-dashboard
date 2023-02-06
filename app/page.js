@@ -83,7 +83,7 @@ const HomePage = () => {
         .updateOne(
           { client_id: user },
           {
-            $set: {telegramId: name},
+            $set: { telegramId: name },
           }
         )
         .then(() => {
@@ -92,12 +92,8 @@ const HomePage = () => {
           window.location.reload();
         })
         .catch((err) => {
-          if (err.toString().search("duplicate")) {
-            edit(); //run edit function again to get a new device id because the one generated was a duplicate
-          } else {
-            alert("Unexpected error. Please try again");
-            console.log(err);
-          }
+          alert("Unexpected error. Please try again");
+          console.log(err);
         });
     }
     setLoading(false);
