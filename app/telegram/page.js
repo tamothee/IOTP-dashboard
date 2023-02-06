@@ -12,7 +12,7 @@ import { Stack } from "@mui/system";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { Box, Grid, IconButton } from "@mui/material";
 
-import { mongodbContext } from "./MongoHandler";
+import { mongodbContext } from "../MongoHandler";
 
 export default function AddDevice() {
   const [password, setpassword] = React.useState("");
