@@ -23,7 +23,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Stack } from "@mui/system";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { Box, Grid, IconButton } from "@mui/material";
 
 // Create the Application
 
@@ -124,7 +123,7 @@ const HomePage = () => {
       {/* <button onClick={write}>write</button> */}
       <div>
         <Dialog open={idPopup} onClose={handleIdPopup}>
-          <DialogTitle>Add Device</DialogTitle>
+          <DialogTitle>Add Telegram</DialogTitle>
           <DialogContent>
             <DialogContentText>
               Please Add in your telegram id to receive alerts
