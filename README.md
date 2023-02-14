@@ -23,4 +23,6 @@ NEXTAUTH_SECRET = (your nextauth secret here for middleware)<br/>
 
 For more information I have found this website that explain the process of using Nextjs, Next-Auth and Auth0 pretty well https://javascript.plainenglish.io/how-to-authenticate-users-with-auth0-in-next-auth-9c1160ce48a8 .
 
+For our project, we are only able to create an account through the Auth0 dashboard for security reasons. If you want, you can let users sign up.
+
 Happy coding!
