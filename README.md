@@ -1,5 +1,7 @@
 You can check out a live demo of the app on https://iotp-dashboard.vercel.app/ . It is hosted on vercel.
 
+For our project, we are only able to create an account through the Auth0 dashboard for security reasons. If you want, you can let users sign up.
+
 Steps to to run the code,
 
 1) make sure you have npm installed or equivalent. Visit https://nodejs.org/en/ for more information if you do not have it installed.
@@ -22,7 +24,5 @@ AUTH0_AUDIENCE= (your auth0 audience) <br/>
 NEXTAUTH_SECRET = (your nextauth secret here for middleware)<br/>
 
 For more information I have found this website that explain the process of using Nextjs, Next-Auth and Auth0 pretty well https://javascript.plainenglish.io/how-to-authenticate-users-with-auth0-in-next-auth-9c1160ce48a8 .
-
-For our project, we are only able to create an account through the Auth0 dashboard for security reasons. If you want, you can let users sign up.
 
 Happy coding!
